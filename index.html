@@ -3,12 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>লেবু লঙ্কা - Lebu Lonka</title>
     <link rel="stylesheet" href="css/style.css">
-    <title>SUbham er lebu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="center-container">
-        <h1>SUBHAM ER LEBU .</h1>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <!-- Replace 'images/logo.png' with your actual logo image path -->
+                <img src="images/logo.png" alt="লেবু লঙ্কা Logo" class="logo-image" style="max-height: 45px; width: auto;" onerror="this.style.display='none'">
+                <span class="logo-text">লেবু লঙ্কা</span>
+            </div>
+
+            <!-- Navigation Menu -->
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#shop" class="nav-link">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+
+            <!-- Cart Icon -->
+            <div class="cart-icon-wrapper">
+                <button id="cartBtn" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount" class="cart-count">0</span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button id="closeCart" class="close-btn">&times;</button>
+        </div>
+        <div id="cartItems" class="cart-items">
+            <p class="empty-cart">Cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+            <button id="checkoutBtn" class="checkout-btn" disabled>Checkout</button>
+        </div>
     </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Order Information</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="checkoutForm" class="checkout-form">
+                <div class="form-group">
+                    <label for="customerName">Name *</label>
+                    <input type="text" id="customerName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerEmail">Email *</label>
+                    <input type="email" id="customerEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">Phone Number *</label>
+                    <input type="tel" id="customerPhone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerAddress">Address *</label>
+                    <textarea id="customerAddress" name="address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="customerNotes">Additional Notes</label>
+                    <textarea id="customerNotes" name="notes" rows="2"></textarea>
+                </div>
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="orderItems"></div>
+                    <div class="order-total">
+                        <strong>Total: <span id="orderTotal">0</span> ₹</strong>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-modal">
+            <div class="success-icon">✓</div>
+            <h2>Order Placed Successfully!</h2>
+            <p id="successMessage"></p>
+            <div class="success-details">
+                <p>Order ID: <strong id="successOrderId"></strong></p>
+                <p>Total Amount: <strong id="successTotal"></strong></p>
+            </div>
+            <p class="success-note">We will contact you soon to confirm your order.</p>
+            <button class="submit-btn" onclick="closeSuccess()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">লেবু লঙ্কা</h1>
+            <p class="hero-subtitle">Authentic Bengali Taste</p>
+            <p class="hero-description">Fresh and delicious lemonades and spicy dishes delivered to your doorstep</p>
+            <a href="#shop" class="cta-button">Shop Now</a>
+        </div>
+        <div class="hero-image">
+            <div class="lemon-icon">🍋</div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="shop" class="shop">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <p class="section-subtitle">Best quality products delivered fresh to your door</p>
+            
+            <div id="productsList" class="products-grid">
+                <!-- Products will be loaded here dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">About Us</h2>
+                    <p>লেবু লঙ্কা is a traditional Bengali food brand combining authentic flavors with fresh ingredients.</p>
+                    <p>We believe every product should be made with love and care, delivering the best quality to our customers.</p>
+                    <p>Our mission is to bring the rich flavors of Bengal to modern times, making authentic Bengali taste accessible to everyone.</p>
+                </div>
+                <div class="about-image">
+                    <div class="about-icon">🌶️</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <h2 class="section-title">Customer Reviews</h2>
+            <div id="reviewsContainer" class="reviews-grid">
+                <!-- Reviews will be loaded dynamically here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>Dhaka, Bangladesh</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+880 1234 567890</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@lebulonka.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="submit-btn">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>লেবু লঙ্কা</h3>
+                    <p>Authentic Bengali taste, fresh ingredients</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 লেবু লঙ্কা. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Firebase Configuration -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+
+    <!-- Scripts -->
+    <script src="js/products.js"></script>
+    <script src="js/coupons.js"></script>
+    <script src="js/reviews.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/email-service.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - লেবু লঙ্কা</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
+                        <img src="images/logo.png" alt="লেবু লঙ্কা Logo" style="max-height: 40px; width: auto;">
+                        <span>লেবু লঙ্কা</span>
+                    </a>
+                </div>
+                <span class="nav-title">Checkout</span>
+                <div class="cart-icon" onclick="goBack()">
+                    <span style="cursor: pointer; font-size: 18px;">← Back</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Container -->
+    <div class="checkout-container">
+        <div class="container">
+            <div class="checkout-wrapper">
+                <!-- Left Column: Checkout Form -->
+                <div class="checkout-form-section">
+                    <h2>Billing Details</h2>
+                    <form id="checkoutFormPage" class="checkout-form">
+                        <div class="form-group">
+                            <label for="customerName">Full Name *</label>
+                            <input type="text" id="customerName" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerEmail">Email Address *</label>
+                            <input type="email" id="customerEmail" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerPhone">Phone Number *</label>
+                            <input type="tel" id="customerPhone" name="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerAddress">Delivery Address *</label>
+                            <textarea id="customerAddress" name="address" rows="4" placeholder="Street address, city, postal code" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerNotes">Order Notes (Optional)</label>
+                            <textarea id="customerNotes" name="notes" rows="3" placeholder="Special instructions for your order"></textarea>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="payment-section">
+                            <h3>Payment Method</h3>
+                            <div class="payment-option">
+                                <input type="radio" id="cod" name="payment" value="COD" checked>
+                                <label for="cod">
+                                    <span class="radio-label">Cash on Delivery (COD)</span>
+                                    <span class="payment-desc">Pay when your order arrives</span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right Column: Order Summary -->
+                <div class="order-summary-section">
+                    <h2>Order Summary</h2>
+                    
+                    <!-- Cart Items -->
+                    <div class="cart-items-summary" id="cartItemsSummary">
+                        <!-- Items will be populated here -->
+                    </div>
+
+                    <!-- Coupon Code -->
+                    <div class="coupon-section">
+                        <div class="coupon-input-group">
+                            <input type="text" id="couponCode" placeholder="Enter coupon code" maxlength="20">
+                            <button type="button" class="apply-coupon-btn" onclick="applyCoupon()">Apply</button>
+                        </div>
+                        <div id="couponMessage" class="coupon-message"></div>
+                    </div>
+
+                    <!-- Charges Section -->
+                    <div class="charges-section">
+                        <div class="charge-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">₹0.00</span>
+                        </div>
+                        <div class="charge-row" id="discountRow" style="display: none;">
+                            <span>Discount (SAVE10 - 10%):</span>
+                            <span id="discountAmount" class="discount-text">-₹0.00</span>
+                        </div>
+                        <div class="charge-row">
+                            <span>Delivery Charges:</span>
+                            <span id="deliveryCharges" class="delivery-free">FREE</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="charge-row total-row">
+                            <span>Total Amount:</span>
+                            <span id="totalAmount">₹0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Place Order Button -->
+                    <button type="button" class="place-order-btn" onclick="submitCheckoutForm()">Place Order</button>
+                    
+                    <p class="order-info">
+                        ✓ Secure checkout<br>
+                        ✓ Free delivery on all orders<br>
+                        ✓ COD available
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-modal">
+            <div class="success-icon">✓</div>
+            <h2>Order Placed Successfully!</h2>
+            <p id="successMessage"></p>
+            <div class="success-details">
+                <p id="successOrderId"></p>
+                <p id="successTotal"></p>
+            </div>
+            <p class="success-note">We will contact you soon to confirm your order.</p>
+            <button class="submit-btn" onclick="goHome()">Continue Shopping</button>
+        </div>
+    </div>
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/email-service.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/coupons.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>
