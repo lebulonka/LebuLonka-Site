@@ -1078,18 +1078,10 @@ body.cart-open::before {
     animation: slideInRight 0.8s ease;
 }
 
-.about-icon {
-    font-size: 180px;
-    animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.about-logo {
+    max-height: 300px;
+    width: auto;
+    object-fit: contain;
 }
 
 /* ===== Reviews Section ===== */
@@ -1345,8 +1337,8 @@ body.cart-open::before {
         gap: 30px;
     }
 
-    .about-icon {
-        font-size: 120px;
+    .about-logo {
+        max-height: 200px;
     }
 
     .cart-sidebar {
