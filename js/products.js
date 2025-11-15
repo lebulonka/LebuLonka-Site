@@ -11,30 +11,30 @@
 const products = [
     {
         id: 1,
-        name: 'লেবু মরিচ চিপস',
-        englishName: 'Lemon Chili Chips',
-        price: 50,
+        name: 'Aloo Biryani 1.5L',
+        englishName: 'Aloo Biryani',
+        price: 69,
         emoji: '🌶️',
         image: './product-images/1.jpg',
-        description: 'Crispy chips with tangy lemon and spicy chili flavor'
+        description: 'Our Signature Aloo Biryani with authentic Bengali flavors'
     },
     {
         id: 2,
-        name: 'আচারের স্বাদ',
-        englishName: 'Pickle Mix',
-        price: 60,
+        name: 'Chicken Biryani 1.5L',
+        englishName: 'Chicken Biryani',
+        price: 119,
         emoji: '🥒',
         image: './product-images/2.jpg',
-        description: 'Traditional Bengali pickle blend with authentic taste'
+        description: 'The Soul of Kolkata, On a Plate: Our Signature Chicken Biryani'
     },
     {
         id: 3,
-        name: 'মরিচ লেবু মধু',
-        englishName: 'Chili Lemon Honey',
-        price: 65,
+        name: 'Egg Biryani 1.5L',
+        englishName: 'Egg Biryani',
+        price: 79,
         emoji: '🍯',
         image: './product-images/3.jpg',
-        description: 'Sweet and spicy honey blend with fresh lemon'
+        description: 'Experience the iconic taste of Kolkata with our flavour-packed Kolkata Egg Biryani.'
     },
     {
         id: 4,
