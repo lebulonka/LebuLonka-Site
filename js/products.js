@@ -42,7 +42,7 @@ const products = [
         englishName: 'Chicken chap',
         price: 55,
         emoji: '🌶️',
-        image: 'images/raw-chili-pickle.jpg',
+        image: './product-images/4.jpg',
         description: 'Indulge in the royal taste of Kolkata’s Mughlai cuisine with our Chicken Chaap'
     },
     // {
