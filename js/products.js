@@ -38,31 +38,31 @@ const products = [
     },
     {
         id: 4,
-        name: 'কাঁচা মরিচ আচার',
-        englishName: 'Raw Chili Pickle',
+        name: 'Chicken chap',
+        englishName: 'Chicken chap',
         price: 55,
         emoji: '🌶️',
         image: 'images/raw-chili-pickle.jpg',
-        description: 'Fresh raw green chili preserved in traditional spices'
+        description: 'Indulge in the royal taste of Kolkata’s Mughlai cuisine with our Chicken Chaap'
     },
-    {
-        id: 5,
-        name: 'লেবুর রস',
-        englishName: 'Lemon Concentrate',
-        price: 70,
-        emoji: '🍋',
-        image: 'images/lemon-concentrate.jpg',
-        description: 'Pure concentrated lemon juice with natural flavor'
-    },
-    {
-        id: 6,
-        name: 'মরিচের গুঁড়া',
-        englishName: 'Chili Powder',
-        price: 45,
-        emoji: '🌶️',
-        image: 'images/chili-powder.jpg',
-        description: 'Pure and spicy chili powder made from finest chilies'
-    }
+    // {
+    //     id: 5,
+    //     name: 'লেবুর রস',
+    //     englishName: 'Lemon Concentrate',
+    //     price: 70,
+    //     emoji: '🍋',
+    //     image: 'images/lemon-concentrate.jpg',
+    //     description: 'Pure concentrated lemon juice with natural flavor'
+    // },
+    // {
+    //     id: 6,
+    //     name: 'মরিচের গুঁড়া',
+    //     englishName: 'Chili Powder',
+    //     price: 45,
+    //     emoji: '🌶️',
+    //     image: 'images/chili-powder.jpg',
+    //     description: 'Pure and spicy chili powder made from finest chilies'
+    // }
 ];
 
 // Product management functions
