@@ -7,6 +7,10 @@ firebase-config.local.js
 email-config.local.js
 cPanel-credentials.json
 
+# PHP Files (deployed separately to cPanel)
+send-email.php
+email-test.php
+
 # Environment Variables
 .env
 .env.local
