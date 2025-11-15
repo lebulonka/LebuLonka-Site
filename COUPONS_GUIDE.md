@@ -39,9 +39,9 @@ const coupons = [
 
 | Code | Discount | Min Cart | Expiry | Status |
 |------|----------|----------|--------|--------|
-| SAVE10 | 10% | ৳100 | Never | ✅ Active |
-| WELCOME20 | 20% | ৳500 | 2025-12-31 | ✅ Active |
-| BENGALI25 | 25% | ৳1000 | Never | ✅ Active |
+| SAVE10 | 10% | ₹100 | Never | ✅ Active |
+| WELCOME20 | 20% | ₹500 | 2025-12-31 | ✅ Active |
+| BENGALI25 | 25% | ₹1000 | Never | ✅ Active |
 
 ---
 
@@ -60,13 +60,13 @@ const coupons = [
 ### Example Flow:
 
 ```
-Customer has ৳450 cart
+Customer has ₹450 cart
 Tries code: WELCOME20
 System checks:
 ├─ Code exists? YES ✓
 ├─ Expired? NO (valid until 2025-12-31) ✓
-└─ Cart ≥ ৳500? NO ✗
-Result: "Minimum order value ৳500 required (Current: ৳450)"
+└─ Cart ≥ ₹500? NO ✗
+Result: "Minimum order value ₹500 required (Current: ₹450)"
 ```
 
 ---
@@ -163,9 +163,9 @@ Clean UX ✓
 ## Examples to Try
 
 ```
-SAVE10      → Works on ৳100+ orders
-WELCOME20   → Works on ৳500+ orders (until Dec 31, 2025)
-BENGALI25   → Works on ৳1000+ orders
+SAVE10      → Works on ₹100+ orders
+WELCOME20   → Works on ₹500+ orders (until Dec 31, 2025)
+BENGALI25   → Works on ₹1000+ orders
 INVALID     → Shows: "✗ Invalid coupon code"
 ```
 

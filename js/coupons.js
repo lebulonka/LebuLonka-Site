@@ -10,21 +10,21 @@ const coupons = [
         discountPercentage: 10,
         minCartValue: 100,
         expiry: null, // Never expires
-        description: '10% off on orders above ৳100'
+        description: '10% off on orders above ₹100'
     },
     {
         code: 'WELCOME20',
         discountPercentage: 20,
         minCartValue: 500,
         expiry: '2025-12-31',
-        description: '20% off on first order above ৳500'
+        description: '20% off on first order above ₹500'
     },
     {
         code: 'BENGALI25',
         discountPercentage: 25,
         minCartValue: 1000,
         expiry: null, // Never expires
-        description: '25% off on orders above ৳1000'
+        description: '25% off on orders above ₹1000'
     }
 ];
 
@@ -80,7 +80,7 @@ function applyCouponWithValidation(couponCode, cartTotal) {
     if (cartTotal < coupon.minCartValue) {
         return {
             valid: false,
-            message: `✗ Minimum order value ৳${coupon.minCartValue} required (Current: ৳${cartTotal})`
+            message: `✗ Minimum order value ₹${coupon.minCartValue} required (Current: ₹${cartTotal})`
         };
     }
     

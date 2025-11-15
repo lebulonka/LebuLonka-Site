@@ -1,11 +1,11 @@
 // ===== Firebase Configuration =====
 const firebaseConfig = {
-    apiKey: "AIzaSyAXrdxpn37KrU7iZZBQluWHTWWQWvhtRSY",
-    authDomain: "lebulonka-a-bee72.firebaseapp.com",
-    projectId: "lebulonka-a-bee72",
-    storageBucket: "lebulonka-a-bee72.firebasestorage.app",
-    messagingSenderId: "541688744152",
-    appId: "1:541688744152:web:775609736850f1f33defad"
+    apiKey: "AIzaSyATjH7v7GuuHGR5ynALekpJmuud0DCImSU",
+    authDomain: "lebulonka.firebaseapp.com",
+    projectId: "lebulonka",
+    storageBucket: "lebulonka.firebasestorage.app",
+    messagingSenderId: "844692464290",
+    appId: "1:844692464290:web:863b8e74ea805989feadfb"
 };
 
 // Firebase REST API endpoint for Firestore

@@ -13,7 +13,7 @@ function getCustomerEmailTemplate(orderData) {
         .map(item => `<tr>
             <td style="padding: 8px; border-bottom: 1px solid #ddd;">${item.name}</td>
             <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: center;">x${item.quantity}</td>
-            <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">৳${item.price * item.quantity}</td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">₹${item.price * item.quantity}</td>
         </tr>`)
         .join('');
 
@@ -70,19 +70,19 @@ function getCustomerEmailTemplate(orderData) {
                 <div class="totals">
                     <div class="totals-row">
                         <span>Subtotal:</span>
-                        <span style="margin-left: 20px;">৳${orderData.subtotal}</span>
+                        <span style="margin-left: 20px;">₹${orderData.subtotal}</span>
                     </div>
                     ${orderData.discount > 0 ? `<div class="totals-row">
                         <span>Discount (${orderData.couponApplied}):</span>
-                        <span style="margin-left: 20px;">-৳${orderData.discount}</span>
+                        <span style="margin-left: 20px;">-₹${orderData.discount}</span>
                     </div>` : ''}
                     <div class="totals-row">
                         <span>Delivery Charges:</span>
-                        <span style="margin-left: 20px;">৳${orderData.deliveryCharges}</span>
+                        <span style="margin-left: 20px;">₹${orderData.deliveryCharges}</span>
                     </div>
                     <div class="totals-row total">
                         <span>Total Amount:</span>
-                        <span style="margin-left: 20px;">৳${orderData.total}</span>
+                        <span style="margin-left: 20px;">₹${orderData.total}</span>
                     </div>
                 </div>
                 
@@ -121,7 +121,7 @@ function getAdminEmailTemplate(orderData) {
         .map(item => `<tr>
             <td style="padding: 8px; border-bottom: 1px solid #ddd;">${item.name}</td>
             <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: center;">x${item.quantity}</td>
-            <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">৳${item.price * item.quantity}</td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">₹${item.price * item.quantity}</td>
         </tr>`)
         .join('');
 
@@ -192,19 +192,19 @@ function getAdminEmailTemplate(orderData) {
                     <table>
                         <tr>
                             <td style="padding: 8px;">Subtotal:</td>
-                            <td style="padding: 8px; text-align: right;">৳${orderData.subtotal}</td>
+                            <td style="padding: 8px; text-align: right;">₹${orderData.subtotal}</td>
                         </tr>
                         ${orderData.discount > 0 ? `<tr>
                             <td style="padding: 8px;">Discount (${orderData.couponApplied}):</td>
-                            <td style="padding: 8px; text-align: right;">-৳${orderData.discount}</td>
+                            <td style="padding: 8px; text-align: right;">-₹${orderData.discount}</td>
                         </tr>` : ''}
                         <tr>
                             <td style="padding: 8px;">Delivery Charges:</td>
-                            <td style="padding: 8px; text-align: right;">৳${orderData.deliveryCharges}</td>
+                            <td style="padding: 8px; text-align: right;">₹${orderData.deliveryCharges}</td>
                         </tr>
                         <tr style="border-top: 2px solid #228B22; font-weight: bold; font-size: 16px;">
                             <td style="padding: 8px;">TOTAL:</td>
-                            <td style="padding: 8px; text-align: right;">৳${orderData.total}</td>
+                            <td style="padding: 8px; text-align: right;">₹${orderData.total}</td>
                         </tr>
                     </table>
                 </div>
