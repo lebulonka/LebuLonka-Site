@@ -40,7 +40,7 @@ const products = [
         id: 4,
         name: 'Chicken chap',
         englishName: 'Chicken chap',
-        price: 55,
+        price: 79,
         emoji: '🌶️',
         image: './product-images/4.jpg',
         description: 'Indulge in the royal taste of Kolkata’s Mughlai cuisine with our Chicken Chaap'
