@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Notice Banner -->
+    <div id="noticeBanner" class="notice-banner"></div>
+
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="navbar-container">
@@ -119,6 +122,39 @@
                 <p>Order ID: <strong id="successOrderId"></strong></p>
                 <p>Total Amount: <strong id="successTotal"></strong></p>
             </div>
+            
+            <!-- Review Section -->
+            <div class="review-section">
+                <h3>Share Your Feedback</h3>
+                <p class="review-subtitle">(Optional)</p>
+                
+                <div class="review-form">
+                    <div class="form-group">
+                        <label for="reviewName">Your Name</label>
+                        <input type="text" id="reviewName" placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reviewRating">Rating</label>
+                        <div class="star-rating" id="starRating">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" id="reviewRating" value="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reviewText">Your Review</label>
+                        <textarea id="reviewText" placeholder="Share your experience (optional)" rows="3"></textarea>
+                    </div>
+                    
+                    <button class="submit-btn" onclick="submitReview()">Submit Review</button>
+                </div>
+            </div>
+            
             <p class="success-note">We will contact you soon to confirm your order.</p>
             <button class="submit-btn" onclick="closeSuccess()">Continue Shopping</button>
         </div>
@@ -126,14 +162,15 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="product-images/video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">লেবু লঙ্কা</h1>
             <p class="hero-subtitle">Authentic Bengali Taste</p>
-            <p class="hero-description">Fresh and delicious lemonades and spicy dishes delivered to your doorstep</p>
+            <p class="hero-description">Fresh and delicious lemonades with a twist of spicy lemonades.</p>
             <a href="#shop" class="cta-button">Shop Now</a>
-        </div>
-        <div class="hero-image">
-            <div class="lemon-icon">🍋</div>
         </div>
     </section>
 
@@ -250,6 +287,9 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
 
+    <!-- Site Configuration -->
+    <script src="js/config.js"></script>
+
     <!-- Scripts -->
     <script src="js/products.js"></script>
     <script src="js/coupons.js"></script>
@@ -257,5 +297,17 @@
     <script src="js/firebase-config.js"></script>
     <script src="js/email-service.js"></script>
     <script src="js/app.js"></script>
+
+    <!-- Initialize Notice Banner -->
+    <script>
+        function initializeNoticeBanner() {
+            const noticeBanner = document.getElementById('noticeBanner');
+            if (noticeBanner && siteConfig.notice.enabled) {
+                noticeBanner.textContent = siteConfig.notice.text;
+                noticeBanner.classList.add('show', siteConfig.notice.type);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', initializeNoticeBanner);
+    </script>
 </body>
 </html>

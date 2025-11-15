@@ -1,0 +1,67 @@
+# ===== SENSITIVE FILES - NEVER COMMIT =====
+# Firebase Configuration with API Keys
+firebase-credentials.json
+firebase-config.local.js
+
+# Email Configuration with credentials
+email-config.local.js
+cPanel-credentials.json
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# API Keys and Secrets
+*.key
+*.pem
+*.p12
+secrets.json
+.secrets
+
+# Node modules (if using npm)
+node_modules/
+package-lock.json
+yarn.lock
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS Files
+Thumbs.db
+
+# Build/Cache files
+dist/
+build/
+.cache/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local development files
+*.local.js
+local-*.js
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+
+# Optional: Test and documentation files (uncomment to ignore)
+# email-test.php
+# EMAIL_*.md
+# DEPLOYMENT_*.md
+

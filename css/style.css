@@ -45,6 +45,45 @@ body {
     padding: 0 20px;
 }
 
+/* ===== Notice Banner ===== */
+.notice-banner {
+    width: 100%;
+    padding: 12px 20px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    display: none;
+    animation: slideDown 0.5s ease;
+}
+
+.notice-banner.show {
+    display: block;
+}
+
+.notice-banner.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-bottom: 2px solid #ffc107;
+}
+
+.notice-banner.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-bottom: 2px solid #17a2b8;
+}
+
+.notice-banner.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-bottom: 2px solid #28a745;
+}
+
+.notice-banner.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-bottom: 2px solid #f5c6cb;
+}
+
 /* ===== Navbar Styles ===== */
 .navbar {
     background: var(--white);
@@ -201,13 +240,38 @@ body {
 
 /* ===== Hero Section ===== */
 .hero {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    min-height: auto;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, rgba(196, 30, 58, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    height: 50vh;
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
     animation: fadeIn 0.8s ease;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
 }
 
 @keyframes fadeIn {
@@ -220,46 +284,53 @@ body {
 }
 
 .hero-content {
-    flex: 1;
-    max-width: 400px;
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+    max-width: 600px;
+    padding: 20px;
 }
 
 .hero-title {
     font-size: 48px;
     font-weight: 900;
-    color: var(--primary-color);
+    color: white;
     margin-bottom: 12px;
-    animation: slideInLeft 0.8s ease 0.2s backwards;
+    animation: slideInUp 0.8s ease 0.2s backwards;
     font-family: var(--font-bengali);
     letter-spacing: 1px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
     font-size: 22px;
-    color: var(--accent-color);
+    color: var(--secondary-color);
     margin-bottom: 10px;
-    animation: slideInLeft 0.8s ease 0.4s backwards;
+    animation: slideInUp 0.8s ease 0.4s backwards;
     font-weight: 700;
     font-family: var(--font-body);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-description {
     font-size: 15px;
-    color: var(--text-color);
+    color: white;
     margin-bottom: 20px;
     font-weight: 500;
     line-height: 1.7;
     font-family: var(--font-body);
-    animation: slideInLeft 0.8s ease 0.6s backwards;
+    animation: slideInUp 0.8s ease 0.6s backwards;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes slideInLeft {
+@keyframes slideInUp {
     from {
-        transform: translateX(-50px);
+        transform: translateY(30px);
         opacity: 0;
     }
     to {
-        transform: translateX(0);
+        transform: translateY(0);
         opacity: 1;
     }
 }
@@ -279,45 +350,7 @@ body {
     animation: slideInLeft 0.8s ease 0.8s backwards;
 }
 
-.cta-button:hover {
-    background: var(--dark-color);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
-}
 
-.hero-image {
-    flex: 0 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 40px;
-    animation: slideInRight 0.8s ease 0.4s backwards;
-}
-
-@keyframes slideInRight {
-    from {
-        transform: translateX(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-.lemon-icon {
-    font-size: 120px;
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
-}
 
 /* ===== Shop Section ===== */
 .shop {
@@ -618,6 +651,9 @@ body.cart-open::before {
     align-items: center;
     justify-content: center;
     font-size: 30px;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
 }
 
 .cart-item-details {
@@ -831,6 +867,97 @@ body.cart-open::before {
     color: var(--accent-color);
     margin: 15px 0;
     font-weight: 500;
+}
+
+/* ===== Review Section in Modal ===== */
+.review-section {
+    background: var(--light-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.review-section h3 {
+    color: var(--primary-color);
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.review-subtitle {
+    text-align: center;
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 15px !important;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.review-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-form label {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.review-form input[type="text"],
+.review-form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.review-form input[type="text"]:focus,
+.review-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(196, 30, 58, 0.2);
+}
+
+.review-form textarea {
+    resize: vertical;
+    font-family: var(--font-body);
+}
+
+/* Star Rating */
+.star-rating {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.star {
+    font-size: 32px;
+    color: #ddd;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.star:hover,
+.star.active {
+    color: var(--secondary-color);
+    transform: scale(1.2);
+}
+
+.review-form .submit-btn {
+    margin-top: 10px;
+    font-size: 13px;
+    padding: 10px 20px;
 }
 
 /* ===== Checkout Form ===== */

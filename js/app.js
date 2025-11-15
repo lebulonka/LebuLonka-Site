@@ -235,9 +235,13 @@ function updateCartDisplay() {
         // Check if this is the first time rendering cart items
         if (cartItems.children.length === 0 || cartItems.querySelector('.empty-cart')) {
             // Full render on first load
-            cartItems.innerHTML = cart.map(item => `
+            cartItems.innerHTML = cart.map(item => {
+                const product = getProduct(item.id);
+                const imageUrl = product && product.image ? product.image : '';
+                const imageStyle = imageUrl ? `background-image: url('${imageUrl}'); background-size: cover; background-position: center;` : '';
+                return `
                 <div class="cart-item" id="cart-item-${item.id}">
-                    <div class="cart-item-image">${item.emoji}</div>
+                    <div class="cart-item-image" style="${imageStyle}">${!imageUrl ? item.emoji : ''}</div>
                     <div class="cart-item-details">
                         <div class="cart-item-name">${item.name}</div>
                         <div class="cart-item-price">₹${item.price} × <span class="qty-display">${item.quantity}</span></div>
@@ -248,7 +252,7 @@ function updateCartDisplay() {
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
         } else {
             // Update existing items without full re-render
             cart.forEach(item => {
@@ -280,8 +284,13 @@ function updateCartItem(item) {
         const newItem = document.createElement('div');
         newItem.className = 'cart-item';
         newItem.id = `cart-item-${item.id}`;
+        
+        const product = getProduct(item.id);
+        const imageUrl = product && product.image ? product.image : '';
+        const imageStyle = imageUrl ? `background-image: url('${imageUrl}'); background-size: cover; background-position: center;` : '';
+        
         newItem.innerHTML = `
-            <div class="cart-item-image">${item.emoji}</div>
+            <div class="cart-item-image" style="${imageStyle}">${!imageUrl ? item.emoji : ''}</div>
             <div class="cart-item-details">
                 <div class="cart-item-name">${item.name}</div>
                 <div class="cart-item-price">₹${item.price} × <span class="qty-display">${item.quantity}</span></div>

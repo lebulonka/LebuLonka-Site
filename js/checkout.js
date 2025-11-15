@@ -264,3 +264,118 @@ function saveOrderToFirebase(orderData) {
             console.log('✓ Order saved locally as backup!');
         });
 }
+
+// ===== Review Submission Function =====
+function submitReview() {
+    const name = document.getElementById('reviewName')?.value?.trim();
+    const rating = parseInt(document.getElementById('reviewRating')?.value);
+    const text = document.getElementById('reviewText')?.value?.trim();
+    
+    // If all fields are empty, just close the modal
+    if (!name && !rating && !text) {
+        closeSuccess();
+        return;
+    }
+    
+    // If review is partial, ask user to complete it
+    if ((name || rating || text) && (!name || !rating || !text)) {
+        alert('Please fill in all review fields or leave them all empty to skip.');
+        return;
+    }
+    
+    // If all fields are filled, add the review
+    if (name && rating && text) {
+        const today = new Date().toISOString().split('T')[0];
+        const newReview = {
+            name: name,
+            text: text,
+            rating: rating,
+            date: today
+        };
+        
+        // Add review using the addReview function from reviews.js
+        if (typeof addReview === 'function') {
+            addReview(newReview);
+            console.log('✓ Review submitted successfully!');
+            showNotification('Thank you for your review!', 'success');
+        } else {
+            console.warn('addReview function not available');
+        }
+    }
+    
+    // Clear review form and close modal
+    clearReviewForm();
+    closeSuccess();
+}
+
+// Clear review form fields
+function clearReviewForm() {
+    document.getElementById('reviewName').value = '';
+    document.getElementById('reviewRating').value = '0';
+    document.getElementById('reviewText').value = '';
+    
+    // Reset star styling
+    const stars = document.querySelectorAll('.star');
+    stars.forEach(star => star.classList.remove('active'));
+}
+
+// Initialize star rating click handlers
+function initializeStarRating() {
+    const stars = document.querySelectorAll('.star');
+    if (stars.length === 0) return; // Exit if no stars found
+    
+    stars.forEach(star => {
+        star.addEventListener('click', function() {
+            const rating = this.dataset.rating;
+            document.getElementById('reviewRating').value = rating;
+            
+            // Update star styling
+            stars.forEach(s => {
+                if (s.dataset.rating <= rating) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
+            });
+        });
+        
+        // Hover effect
+        star.addEventListener('mouseover', function() {
+            const rating = this.dataset.rating;
+            stars.forEach(s => {
+                if (s.dataset.rating <= rating) {
+                    s.style.color = 'var(--secondary-color)';
+                } else {
+                    s.style.color = '#ddd';
+                }
+            });
+        });
+    });
+    
+    // Reset stars on mouseleave
+    const starRatingContainer = document.getElementById('starRating');
+    if (starRatingContainer) {
+        starRatingContainer.addEventListener('mouseleave', function() {
+            const currentRating = document.getElementById('reviewRating').value;
+            stars.forEach(s => {
+                if (s.dataset.rating <= currentRating) {
+                    s.style.color = 'var(--secondary-color)';
+                } else {
+                    s.style.color = '#ddd';
+                }
+            });
+        });
+    }
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    initializeStarRating();
+});
+
+// Also initialize if DOM is already loaded (for checkout page)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeStarRating);
+} else {
+    initializeStarRating();
+}

@@ -1,296 +1,323 @@
-# লেবু লঙ্কা - Lebu Lonka Restaurant Website
+# লেবু লঙ্কা (Lebu Lonka) - E-Commerce Website
 
-A modern, responsive Bengali-themed restaurant website for "Lebu Lonka" (লেবু লঙ্কা) - a lemon and chili-based food startup.
+A modern, Bengali-first e-commerce platform for selling lemonades and specialty drinks with online ordering, customer reviews, coupon system, and email notifications.
 
-## 🎨 Features
+## 🌐 Live Website
+- **Production**: https://lebulonka.in
+- **Repository**: https://github.com/lebulonka/LebuLonka-Site
 
-### 1. **Responsive Design**
-- Mobile-friendly layout
-- Smooth animations and transitions
-- Bengali language support
-- Saffron and red color theme (inspired by Bengali heritage)
+## 🎯 Key Features
 
-### 2. **Navigation**
-- Logo with animated lemon icon on top left
-- Center navigation menu (Home, Shop, About, Contact)
-- Shopping cart icon on top right
-- Mobile hamburger menu
+### 🛍️ Shopping
+- ✅ Product catalog with images and descriptions
+- ✅ Add to cart with real-time updates
+- ✅ Cart persistence via localStorage
+- ✅ Product image display in cart
+- ✅ Responsive product grid
 
-### 3. **Home Page Sections**
-- **Hero Section**: Eye-catching banner with product image and CTA button
-- **Shop Section**: Display of 6 products with:
-  - Product images (emoji-based)
-  - Product names in Bengali
-  - Prices with Indian Rupees symbol (₹)
-  - Add to cart functionality
-  - Quantity controls
-- **About Section**: Company information and mission
-- **Reviews Section**: Customer testimonials with 5-star ratings
-- **Contact Section**: Contact information and contact form
-- **Footer**: Quick links, social media, copyright
+### 💰 Checkout & Orders
+- ✅ Comprehensive checkout form
+- ✅ Customer information collection
+- ✅ Order summary with totals
+- ✅ Coupon code system
+- ✅ Free delivery for all orders
+- ✅ Order ID generation
+- ✅ Firebase Firestore backend
 
-### 4. **Shopping Cart**
-- Slide-out cart sidebar
-- Add/remove items functionality
-- Quantity adjustment
-- Real-time cart total calculation
-- Cart item counter in navbar
-- Empty cart message when no items
+### ⭐ Reviews & Feedback
+- ✅ Customer reviews after order
+- ✅ 5-star rating system
+- ✅ Random reviews on homepage
+- ✅ Review persistence
 
-### 5. **Checkout System**
-- Modal-based checkout form
-- Customer information collection:
-  - Name (নাম)
-  - Email (ইমেইল)
-  - Phone Number (ফোন নম্বর)
-  - Address (ঠিকানা)
-  - Additional Notes (অতিরিক্ত নোট)
-- Order summary display
-- COD (Cash on Delivery) payment method
-- Order confirmation with order ID
+### 🎟️ Coupons
+- ✅ Discount code validation
+- ✅ Percentage & fixed discounts
+- ✅ Usage limits per coupon
+- ✅ Easy coupon management
 
-### 6. **Animations**
-- Smooth fade-in effects
-- Slide animations for navigation
-- Bounce effect on logo
-- Float animation on hero image
-- Hover effects on products and buttons
-- Rotating chili icon in About section
+### 📧 Email Notifications
+- ✅ Order confirmation emails
+- ✅ HTML email templates
+- ✅ cPanel email backend
+- ✅ Fallback simulation mode
 
-### 7. **Data Persistence**
-- LocalStorage for cart management
-- LocalStorage for order history
-- Firebase integration ready (Firestore for cloud storage)
+### 🎨 Design
+- ✅ Modern responsive layout
+- ✅ Bengali language support
+- ✅ Hero video background (16:9)
+- ✅ Smooth animations
+- ✅ Notice banner system
+- ✅ Success modal with ratings
 
-## 🛠️ Technology Stack
-
-- **HTML5**: Semantic markup with Bengali language support
-- **CSS3**: Advanced styling with CSS Grid, Flexbox, and animations
-- **JavaScript (ES6+)**: DOM manipulation and event handling
-- **Firebase**: Backend for order management (optional)
-- **Font Awesome**: Icons for UI elements
-
-## 📁 File Structure
+## 📁 Project Structure
 
 ```
 LebuLonka-Site/
-├── index.html                 # Main HTML file with all sections
+├── index.html                    # Homepage
+├── checkout.html                 # Checkout page
+├── send-email.php               # Email backend
+│
 ├── css/
-│   └── style.css             # Complete styling with animations
+│   ├── style.css               # Main stylesheet
+│   └── checkout.css            # Checkout styles
+│
 ├── js/
-│   ├── app.js                # Main JavaScript functionality
-│   └── firebase-config.js    # Firebase configuration
-└── README.md                 # Documentation
+│   ├── config.js               # Site configuration
+│   ├── app.js                  # Cart & main logic
+│   ├── checkout.js             # Checkout processing
+│   ├── products.js             # Product database
+│   ├── coupons.js              # Coupon system
+│   ├── reviews.js              # Reviews database
+│   ├── firebase-config.js      # Firebase setup
+│   └── email-service.js        # Email service
+│
+├── images/                      # Website images
+├── product-images/              # Product images & video
+│
+├── .gitignore                  # Git ignore rules
+├── .env.example                # Environment template
+├── README.md                   # This file
+└── vercel.json                 # Deployment config
 ```
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
-### 1. Basic Setup (No Backend)
-The website works immediately without Firebase configuration. It uses localStorage to save cart and orders.
+### No Installation Needed!
+This is a vanilla JavaScript project - just open in browser or deploy directly.
 
+### Local Testing
 ```bash
-1. Open index.html in your web browser
-2. The site will load with full functionality
-3. Cart data persists in browser's localStorage
+# Using Python 3
+python -m http.server 8000
+
+# Using PHP
+php -S localhost:8000
+
+# Then visit http://localhost:8000
 ```
 
-### 2. Firebase Setup (Optional - For Cloud Storage)
+## ⚙️ Configuration
 
-#### Step 1: Create Firebase Project
-1. Go to [Firebase Console](https://console.firebase.google.com/)
-2. Click "Add Project"
-3. Enter "Lebu Lonka" as project name
-4. Complete the setup wizard
-
-#### Step 2: Enable Firestore Database
-1. In Firebase Console, go to "Firestore Database"
-2. Click "Create Database"
-3. Choose "Start in production mode"
-4. Select a region (preferably nearest to your location)
-
-#### Step 3: Get Firebase Credentials
-1. Go to Project Settings (gear icon)
-2. Copy your Firebase configuration
-
-#### Step 4: Update Firebase Config
-Open `js/firebase-config.js` and replace:
+### 1. Site Settings (`js/config.js`)
 ```javascript
-const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+const siteConfig = {
+    notice: {
+        enabled: true,
+        text: "Currently delivering in Howrah only",
+        type: "warning"  // warning, info, success, error
+    }
 };
 ```
 
-#### Step 5: Enable Collections
-In Firestore:
-1. Create a new collection called "orders"
-2. Set the document structure as needed (functions in `firebase-config.js` will handle it)
-
-## 📦 Products
-
-The website includes 6 sample products:
-1. লেমনেড (ঠান্ডা) - ₹50
-2. মশলাদার লেমনেড - ₹60
-3. আদা লেমনেড - ₹55
-4. লঙ্কার মিশ্রণ - ₹75
-5. মধু লেমনেড - ₹65
-6. নিম পাতা লেমনেড - ₹70
-
-To modify products, edit the `sampleProducts` array in `js/app.js`.
-
-## 🎨 Color Scheme
-
-- **Primary Color**: #FF6B35 (Saffron-Red)
-- **Secondary Color**: #FFD60A (Golden Yellow)
-- **Accent Color**: #00A86B (Green)
-- **Dark Color**: #1a1a1a (Dark Gray)
-- **Light Color**: #f8f8f8 (Light Gray)
-
-These colors are inspired by the Indian and Bengali flag colors.
-
-## 🔧 Key Functions
-
-### Cart Management
-```javascript
-addToCart(productId)        // Add item to cart
-removeFromCart(productId)   // Remove item from cart
-increaseQuantity(productId) // Increase quantity
-decreaseQuantity(productId) // Decrease quantity
-updateCartDisplay()         // Update cart UI
-```
-
-### Checkout
-```javascript
-openCheckout()              // Open checkout modal
-submitOrder(event)          // Process order
-renderOrderSummary()        // Show order details
-```
-
-### Firebase
-```javascript
-saveOrderToFirebase(orderData)    // Save order to Firebase
-loadOrdersFromFirebase()          // Load orders from Firebase
-```
-
-## 📱 Responsive Breakpoints
-
-- Desktop: 1200px and above
-- Tablet: 768px to 1199px
-- Mobile: Below 768px
-
-## ✨ Special Features
-
-1. **Smooth Animations**
-   - Page load animations
-   - Hover effects on all interactive elements
-   - Smooth transitions between sections
-
-2. **Bengali Language Support**
-   - Full Bengali text throughout
-   - Bengali numerals in prices
-   - Bengali month names (when applicable)
-
-3. **User Experience**
-   - Toast notifications for user actions
-   - Form validation
-   - Auto-save cart to localStorage
-   - Responsive images and icons
-
-4. **Performance**
-   - Minimal external dependencies
-   - Optimized CSS and JavaScript
-   - Smooth scrolling
-   - Efficient event handling
-
-## 🔐 Security Notes
-
-- No sensitive data stored in localStorage
-- Firebase Firestore rules should be configured for production
-- Admin authentication should be implemented for order management
-- Input validation is performed on the client side
-
-## 🐛 Browser Support
-
-- Chrome (Latest)
-- Firefox (Latest)
-- Safari (Latest)
-- Edge (Latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## 📝 Customization
-
-### Add More Products
-Edit `sampleProducts` array in `js/app.js`:
+### 2. Products (`js/products.js`)
 ```javascript
 {
-    id: 7,
-    name: 'আপনার পণ্য',
-    price: 100,
-    description: 'পণ্যের বর্ণনা',
-    emoji: '🍋'
+    id: 1,
+    name: 'Product Name (Bengali)',
+    englishName: 'Product Name (English)',
+    price: 50,
+    emoji: '🌶️',
+    image: './product-images/1.jpg',
+    description: 'Product description'
 }
 ```
 
-### Change Colors
-Edit CSS variables in `css/style.css`:
-```css
-:root {
-    --primary-color: #FF6B35;
-    --secondary-color: #FFD60A;
-    --accent-color: #00A86B;
+### 3. Coupons (`js/coupons.js`)
+```javascript
+{
+    code: 'SAVE10',
+    discount: 10,
+    type: 'percentage',  // or 'fixed'
+    maxUses: 100,
+    description: 'Save 10% on your order'
 }
 ```
 
-### Modify Contact Info
-Edit the contact section in `index.html`:
-- Phone: +880 1234 567890
-- Email: info@lebulonka.com
-- Address: ঢাকা, বাংলাদেশ
+### 4. Reviews (`js/reviews.js`)
+```javascript
+{
+    name: 'Customer Name',
+    text: 'Review text...',
+    rating: 5,
+    date: '2025-11-15'
+}
+```
 
-## 🚀 Deployment
+## 🔥 Firebase Setup
 
-### Using GitHub Pages
-1. Push code to GitHub
-2. Go to repository Settings
-3. Enable GitHub Pages
-4. Select main branch as source
+1. **Create Project**
+   - Go to https://console.firebase.google.com/
+   - Create new project
+   - Enable Firestore Database
 
-### Using Netlify
-1. Connect GitHub repository
-2. Set build command: (leave empty for static site)
-3. Deploy!
+2. **Get API Keys**
+   - Project Settings → API Keys
+   - Copy to `js/firebase-config.js`
 
-### Using Firebase Hosting
+3. **Set Security Rules**
+   ```javascript
+   rules_version = '2';
+   service cloud.firestore {
+     match /databases/{database}/documents {
+       match /orders/{document=**} {
+         allow read: if request.auth != null;
+         allow write: if request.auth != null;
+       }
+     }
+   }
+   ```
+
+## 📧 Email Setup
+
+### Option 1: cPanel (Recommended)
+1. Create email account in cPanel
+2. Upload `send-email.php` to `public_html`
+3. Update endpoint in `js/email-service.js`
+
+### Option 2: Local Testing
+- Fallback mode simulates emails to browser console
+- Works offline automatically
+- Great for development
+
+## 🎬 Hero Video
+
+- **File**: `product-images/video.mp4`
+- **Format**: MP4 (H.264)
+- **Ratio**: 16:9
+- **Resolution**: 720p recommended
+- **Playback**: Auto, muted, looping
+
+## 🔐 Security
+
+### Protected Files
+- `.gitignore` prevents sensitive file commits
+- `.env.example` shows template only
+- Firebase keys are public-by-design (secured by rules)
+
+### Security Rules
+- Firestore restricted to authenticated users
+- Email credentials not in code
+- Input validation on all forms
+
+### What's Committed
+✅ Code, images, configuration
+❌ Passwords, credentials, private keys
+
+## 📱 Responsive Design
+
+- ✅ Mobile first approach
+- ✅ Tablet optimized
+- ✅ Desktop enhanced
+- ✅ Touch-friendly on mobile
+
+## 🌐 Deployment
+
+### Vercel (Easiest)
 ```bash
-npm install -g firebase-tools
-firebase login
-firebase init hosting
-firebase deploy
+npm install -g vercel
+vercel
 ```
 
-## 🤝 Contributing
+### cPanel Hosting
+1. FTP all files to `public_html`
+2. Upload `send-email.php`
+3. Point domain to public_html
+4. Update endpoints in config
 
-To contribute or suggest improvements:
-1. Create a feature branch
-2. Make your changes
-3. Test thoroughly
-4. Submit a pull request
+### Traditional Hosting
+- Just upload via FTP
+- No build process
+- Works everywhere
 
-## 📄 License
+## 🧪 Testing Checklist
 
-This project is created for "Lebu Lonka" restaurant startup.
+- [ ] Products display correctly
+- [ ] Add to cart works
+- [ ] Cart updates in real-time
+- [ ] Coupon codes apply discount
+- [ ] Checkout form validates
+- [ ] Order saves to Firebase
+- [ ] Email sends/simulates
+- [ ] Reviews display on homepage
+- [ ] Notice banner shows
+- [ ] Mobile responsive
+
+## 📊 Browser Support
+
+- ✅ Chrome 90+
+- ✅ Firefox 88+
+- ✅ Safari 14+
+- ✅ Edge 90+
+
+## 📝 Documentation
+
+- **README.md** - This file
+- **GITHUB_SECURITY.md** - GitHub security info
+- **SENSITIVE_DATA_NOTICE.md** - Data protection
+- **COUPONS_GUIDE.md** - Coupon management
+- **REVIEWS_GUIDE.md** - Reviews system
+- **EMAIL_DEPLOYMENT_GUIDE.md** - Email setup
+- **.env.example** - Environment variables
+
+## 🐛 Troubleshooting
+
+### Emails Not Sending
+- Check `send-email.php` in public_html
+- Verify email account exists
+- Check browser console for errors
+- Fallback mode works offline
+
+### Firebase Issues
+- Verify API key in firebase-config.js
+- Check Security Rules allow writes
+- Use browser DevTools Network tab
+- localStorage fallback saves data
+
+### Cart Not Saving
+- Check localStorage enabled
+- Clear cache and reload
+- Not in Private/Incognito mode
+- Check browser storage in DevTools
+
+### Images Missing
+- Verify image paths in products.js
+- Check product-images folder exists
+- Upload to server if needed
+- Fallback shows emoji
 
 ## 📞 Support
 
-For issues or questions:
-- Email: info@lebulonka.com
-- Phone: +880 1234 567890
+**Email**: help@lebulonka.in  
+**Website**: https://lebulonka.in  
+**GitHub**: https://github.com/lebulonka/LebuLonka-Site
+
+## 📄 License
+
+Proprietary - All rights reserved © 2025 LebuLonka
+
+## 🎉 Changelog
+
+### v2.0 (Nov 15, 2025)
+- ✅ Hero section with video background
+- ✅ Customer review system
+- ✅ Notice banner configuration
+- ✅ Product images in cart
+- ✅ Enhanced styling
+- ✅ Security improvements
+
+### v1.0 (Initial)
+- ✅ Core e-commerce
+- ✅ Cart & checkout
+- ✅ Firebase integration
+- ✅ Email notifications
 
 ---
 
-**Made with ❤️ for Lebu Lonka** | 2025
-Repo created
+**Ready to Deploy!** ✨
+
+```bash
+git add .
+git commit -m "v2.0: Final release with all features"
+git push origin main
+```
