@@ -11,6 +11,9 @@ cPanel-credentials.json
 send-email.php
 email-test.php
 
+# Deployment files for other platforms
+vercel.json
+
 # Environment Variables
 .env
 .env.local
