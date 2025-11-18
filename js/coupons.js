@@ -6,11 +6,11 @@
 
 const coupons = [
     {
-        code: 'SAVE10',
-        discountPercentage: 10,
-        minCartValue: 100,
+        code: 'SORRY100',
+        discountPercentage: 100,
+        minCartValue: 0,
         expiry: null, // Never expires
-        description: '10% off on orders above ₹100'
+        description: '100% off as an apology'
     },
     {
         code: 'WELCOME20',
