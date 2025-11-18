@@ -8,7 +8,7 @@ const coupons = [
     {
         code: 'SORRY100',
         discountPercentage: 100,
-        minCartValue: 0,
+        minCartValue: 1,
         expiry: null, // Never expires
         description: '100% off as an apology'
     },
